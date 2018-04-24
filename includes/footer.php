@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="footer-copyright py-3 text-center">
-				&copy; 2018 Copyright
+				&copy; <?php echo (date('Y') == '2018') ? date('Y') : "2018 - ".date('Y'); ?> Copyright
 			</div>
 		</footer>                    
        

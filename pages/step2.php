@@ -1,22 +1,25 @@
 <?php
-	include "../includes/header.php";
+	session_start();
 	$errorMessage = '';
 
 		if(isset($_POST['step2'])) {
+			echo "<script>alert('".$_SESSION['needs']." - ".$_SESSION['offers']." - ".$_SESSION['email']." - ".$_SESSION['city']." - ".$_SESSION['state']."');</script>";
 			$email = $_POST['email'];
 			$city = $_POST['city'];
 			$state = $_POST['states'];
 
 			if(!empty($email) && !empty($city) && !empty($state)) {
-				session_start();
 				$_SESSION['email'] = $email;
 				$_SESSION['city'] = $city;
 				$_SESSION['state'] = $state;
+				
+				header("Location: offers.php");
 			}
 
 			else
 				$errorMessage = 'Please fill-in the whole form.';
 		}
+		include "../includes/header.php";
 ?>
        	<main class="container mt-5 mb-5">
   			<h1 class="text-center mb-5">Need Something? Someone might want to barter!</h1>
@@ -70,8 +73,6 @@
 				</div>
 			</form>
 		
-		 	<p class="text-center text-secondary">Seprate your wants and offers with a comma: <span><i>baby sitter , washes fixed , Cheap car</i></span></p>
-			 
 			 <div class="more-info mt-5 bg-primary text-light p-4 text-justify rounded">
 				<p class="text-center">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat doloribus provident, numquam soluta vitae minima ex ipsum aspernatur praesentium ipsa quidem quaerat autem optio id modi ad perspiciatis perferendis blanditiis maiores veritatis consequuntur similique laboriosam iure tempore! Reiciendis asperiores, quia adipisci eligendi eum natus earum quasi. Quidem excepturi, cum sunt, assumenda amet error. Illum magnam, obcaecati beatae! Iste eaque quia ducimus labore culpa dolorem totam quisquam doloremque tempora minima quod incidunt, dignissimos nulla eveniet vero recusandae pariatur, ex esse mollitia delectus, ipsa dolore. Assumenda quaerat dolorem, veritatis maiores vitae molestiae sequi tempora perspiciatis, animi nisi ipsam fuga voluptatem reprehenderit asperiores!

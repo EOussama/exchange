@@ -23,7 +23,11 @@
 				<h1 class="display-1 text-center"><i class="fas fa-bug"></i> Ops, file not found!</h1>
 				<hr>
 				<p class="text-center">The page you're trying to access does not exists! either that, or there were some problems while being redirected, in that case please let our support team know.</p>
+<<<<<<< HEAD
+				<a href="\exchange\index.php" target="_self"><button class="btn btn-primary btn-lg btn-block">Main page</button></a>
+=======
 				<a href="\exchange\index.php" target="_self"><button class="btn btn-dark btn-lg btn-block">Main page</button></a>
+>>>>>>> dc5bd234611b1eb68ff7678c98398154c265b8af
     		</div>
     	</header>
 	</body>

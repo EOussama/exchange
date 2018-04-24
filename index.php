@@ -1,5 +1,4 @@
 <?php
-	include "includes/header.php";
 	$errorMessage = '';
 
 	if(isset($_POST['step1'])) {
@@ -17,6 +16,7 @@
 		else
 			$errorMessage = 'Please fill-in the whole form.';
 	}
+	include "includes/header.php";
 ?>
        	<main class="container mt-5 mb-5">
   			<h1 class="text-center mb-5">Need Something? Someone might want to barter!</h1>
@@ -34,10 +34,10 @@
 				?>
 				<div class="row mb-4">
 					<div class="col">
-						<input type="text" name="needs" class="form-control form-control-lg" placeholder="I need this ..">
+						<input type="text" name="needs" class="form-control form-control-lg" placeholder="I need this...">
 					</div>
 					<div class="col">
-						<input type="text" name="offers" class="form-control form-control-lg" placeholder="I can offer this ..">
+						<input type="text" name="offers" class="form-control form-control-lg" placeholder="I can offer this...">
 					</div>
 				</div>
 				<div class="row mb-5">
