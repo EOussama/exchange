@@ -1,0 +1,14 @@
+header div.jumbotron { margin-bottom: 0px; }
+
+nav.navbar.sticky-top.sticky {
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
+	width: 100%;
+    z-index: 100;
+}
+
+form.main-form {
+	width: 600px;
+	margin: auto;
+}
