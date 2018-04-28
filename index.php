@@ -1,4 +1,13 @@
 <?php
+	session_start();
+
+	$_SESSION['logged-in'] = !isset($_SESSION['logged-in']) ? false : $_SESSION['logged-in'];
+	$_SESSION['userid'] = !isset($_SESSION['userid']) ? 0 : $_SESSION['userid'];
+	$_SESSION['username'] = !isset($_SESSION['username']) ? '' : $_SESSION['username'];
+	$_SESSION['email'] = !isset($_SESSION['email']) ? '' : $_SESSION['email'];
+	$_SESSION['city'] = !isset($_SESSION['city']) ? '' : $_SESSION['city'];
+	$_SESSION['state'] = !isset($_SESSION['state']) ? '' : $_SESSION['state'];
+
 	$errorMessage = '';
 
 	if(isset($_POST['step1'])) {
@@ -6,7 +15,6 @@
 		$offers = $_POST['offers'];
 		
 		if(!empty($needs) && !empty($offers)) {
-			session_start();
 			$_SESSION['needs'] = $needs;
 			$_SESSION['offers'] = $offers;
 			

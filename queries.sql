@@ -15,6 +15,9 @@ CREATE TABLE `Users`(
 CREATE TABLE `Matches`(
 	`matchid` INT(11) NOT NULL AUTO_INCREMENT,
     `userid` INT(11) NOT NULL,
+    `wants` TEXT NOT NULL,
+    `offers` TEXT NOT NULL,
+	`postDate` DATETIME DEFAULT CURRENT_TIMESTAMP,
     
     CONSTRAINT pk_matchid PRIMARY KEY(`matchid`),
     CONSTRAINT fk_userid FOREIGN KEY(`userid`) REFERENCES `Users`(`userid`)

@@ -3,7 +3,7 @@
 	$errorMessage = '';
 
 		if(isset($_POST['step2'])) {
-			echo "<script>alert('".$_SESSION['needs']." - ".$_SESSION['offers']." - ".$_SESSION['email']." - ".$_SESSION['city']." - ".$_SESSION['state']."');</script>";
+			#echo "<script>alert('".$_SESSION['needs']." - ".$_SESSION['offers']." - ".$_SESSION['email']." - ".$_SESSION['city']." - ".$_SESSION['state']."');</script>";
 			$email = $_POST['email'];
 			$city = $_POST['city'];
 			$state = $_POST['states'];
@@ -41,28 +41,28 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">@</span>
 							</div>
-							<input type="email" name="email" class="form-control form-control-lg" placeholder="Email Address">
+							<input type="email" name="email" value="<?php echo $_SESSION['email']; ?>" class="form-control form-control-lg" placeholder="Email Address">
 						</div>
 					</div>
 				</div>
 				<div class="row mb-4">
 					<div class="col">
-						<input type="text" name="city" class="form-control form-control-lg" placeholder="City">
+						<input type="text" name="city" value="<?php echo $_SESSION['city']; ?>" class="form-control form-control-lg" placeholder="City">
 					</div>
 					<div class="col">
 						<select name="states" class="form-control form-control-lg">
-							<option value="TA">Tanger-Tetouan-Al Hoceima</option>
-							<option value="OR">Oriental</option>          
-							<option value="FE">Fès-Meknès</option>
-							<option value="RA">Rabat-Salé-Kénitra</option>
-							<option value="BE">Béni Mellal-Khénifra</option>
-							<option value="CA">Casablanca-Settat</option>
-							<option value="MA">Marrakesh-Safi</option>
-							<option value="DR">Drâa-Tafilalet</option>
-							<option value="SO">Souss-Massa</option>
-							<option value="GU">Guelmim-Oued Noun</option>
-							<option value="LA">Laâyoune-Sakia El Hamra</option>
-							<option value="DA">Dakhla-Oued Ed-Dahab</option>        
+							<option <?php echo ($_SESSION['state'] === 'TA' ? 'selected' : ''); ?> value="TA">Tanger-Tetouan-Al Hoceima</option>
+							<option <?php echo ($_SESSION['state'] === 'OR' ? 'selected' : ''); ?> value="OR">Oriental</option>          
+							<option <?php echo ($_SESSION['state'] === 'FE' ? 'selected' : ''); ?> value="FE">Fès-Meknès</option>
+							<option <?php echo ($_SESSION['state'] === 'RA' ? 'selected' : ''); ?> value="RA">Rabat-Salé-Kénitra</option>
+							<option <?php echo ($_SESSION['state'] === 'BE' ? 'selected' : ''); ?> value="BE">Béni Mellal-Khénifra</option>
+							<option <?php echo ($_SESSION['state'] === 'CA' ? 'selected' : ''); ?> value="CA">Casablanca-Settat</option>
+							<option <?php echo ($_SESSION['state'] === 'MA' ? 'selected' : ''); ?> value="MA">Marrakesh-Safi</option>
+							<option <?php echo ($_SESSION['state'] === 'DR' ? 'selected' : ''); ?> value="DR">Drâa-Tafilalet</option>
+							<option <?php echo ($_SESSION['state'] === 'SO' ? 'selected' : ''); ?> value="SO">Souss-Massa</option>
+							<option <?php echo ($_SESSION['state'] === 'GU' ? 'selected' : ''); ?> value="GU">Guelmim-Oued Noun</option>
+							<option <?php echo ($_SESSION['state'] === 'LA' ? 'selected' : ''); ?> value="LA">Laâyoune-Sakia El Hamra</option>
+							<option <?php echo ($_SESSION['state'] === 'DA' ? 'selected' : ''); ?> value="DA">Dakhla-Oued Ed-Dahab</option>        
 						</select>
 					</div>
 				</div>
