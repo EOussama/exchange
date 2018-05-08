@@ -130,7 +130,7 @@
 										  <input class=\"form-control mr-sm-2\" type=\"search\" name=\"city\" placeholder=\"City\" aria-label=\"Search\">
 										  <select name=\"states\" class=\"form-control\">\r\n\t\t\t\t\t\t\t<option value=\"TA\">Tanger-Tetouan-Al Hoceima</option>\r\n\t\t\t\t\t\t\t<option value=\"OR\">Oriental</option>          \r\n\t\t\t\t\t\t\t<option value=\"FE\">F\u00E8s-Mekn\u00E8s</option>\r\n\t\t\t\t\t\t\t<option value=\"RA\">Rabat-Sal\u00E9-K\u00E9nitra</option>\r\n\t\t\t\t\t\t\t<option value=\"BE\">B\u00E9ni Mellal-Kh\u00E9nifra</option>\r\n\t\t\t\t\t\t\t<option value=\"CA\">Casablanca-Settat</option>\r\n\t\t\t\t\t\t\t<option value=\"MA\">Marrakesh-Safi</option>\r\n\t\t\t\t\t\t\t<option value=\"DR\">Dr\u00E2a-Tafilalet</option>\r\n\t\t\t\t\t\t\t<option value=\"SO\">Souss-Massa</option>\r\n\t\t\t\t\t\t\t<option value=\"GU\">Guelmim-Oued Noun</option>\r\n\t\t\t\t\t\t\t<option value=\"LA\">La\u00E2youne-Sakia El Hamra</option>\r\n\t\t\t\t\t\t\t<option value=\"DA\">Dakhla-Oued Ed-Dahab</option>        \r\n\t\t\t\t\t\t</select>
 										  
-										  <input class='ml-sm-2' class='form-control' type='checkbox'>Ignore location</input>
+										  <input class='ml-sm-2' name='loc' class='form-control' type='checkbox'>Ignore location</input>
 										  <input class=\"ml-sm-2 btn btn-outline-light my-2 my-sm-0\" type=\"submit\" value='Search'\">
 										</form>
 									</li></div>";

@@ -3,7 +3,6 @@
 	$errorMessage = '';
 
 		if(isset($_POST['step2'])) {
-			#echo "<script>alert('".$_SESSION['needs']." - ".$_SESSION['offers']." - ".$_SESSION['email']." - ".$_SESSION['city']." - ".$_SESSION['state']."');</script>";
 			$email = $_POST['email'];
 			$city = $_POST['city'];
 			$state = $_POST['states'];
@@ -12,6 +11,7 @@
 				$_SESSION['email'] = $email;
 				$_SESSION['city'] = $city;
 				$_SESSION['state'] = $state;
+				$_SESSION['loc'] = $_POST['loc'];
 				
 				header("Location: offers.php");
 			}
@@ -48,6 +48,7 @@
 				<div class="row mb-4">
 					<div class="col">
 						<input type="text" name="city" value="<?php echo $_SESSION['city']; ?>" class="form-control form-control-lg" placeholder="City">
+						<input name='loc' type='hidden' value="false">
 					</div>
 					<div class="col">
 						<select name="states" class="form-control form-control-lg">

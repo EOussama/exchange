@@ -1,17 +1,35 @@
 <?php
 	session_start();
 
-	if($_SESSION['logged-in'] == false)
-		echo "<script>window.location = '/exchange/index.php';</script>";
-
 	require "../includes/database.php";
 	include "../includes/header.php";
-	
+
 	$query = "SELECT * FROM `matches` INNER JOIN `users` ON `users`.`userid` = `matches`.`userid` WHERE `users`.`userid` <> ".$_SESSION['userid'].";";
 	$results = $con->query($query);
 	$all_offers = $results->fetch_all(MYSQLI_ASSOC);
+	
+	$_SESSION['loc'] = (isset($_POST['loc']) === true) ? $_POST['loc'] : false;
+	$wants_array = explode(", ", $_SESSION['needs']);
+	$offers_array = explode(", ", $_SESSION['offers']);
+	$wants_str = 'AND (';
+	$offers_str = 'AND (';
+	$i = 0;
+	$j = 0;
 
-	$query = "SELECT * FROM `matches` INNER JOIN `users` ON `users`.`userid` = `matches`.`userid` WHERE `users`.`userid` <> ".$_SESSION['userid']." AND `users`.`city` = '".$_SESSION['city']."' AND `users`.`state` = '".$_SESSION['state']."';";
+	foreach($wants_array as $want) {
+		$wants_str .= "`offers` LIKE '%$want%'";
+		$wants_str .= (++$i !== sizeof($wants_array)) ? ' OR ' : '';
+	}
+	echo $_SESSION['loc'];
+	foreach($offers_array as $offer) {
+		$offers_str .= "`wants` LIKE '%$offer%'";
+		$offers_str .= (++$j !== sizeof($offers_array)) ? ' OR ' : '';
+	}
+
+	$wants_str .= ") ";
+	$offers_str .= ") ";
+
+	$query = "SELECT * FROM `matches` INNER JOIN `users` ON `users`.`userid` = `matches`.`userid` WHERE `users`.`userid` <> ".$_SESSION['userid']." AND `users`.`city` = '".$_SESSION['city']."' AND `users`.`state` = '".$_SESSION['state']."' $wants_str $offers_str;";
 	$results = $con->query($query);
 	$offers = $results->fetch_all(MYSQLI_ASSOC);
 
@@ -21,7 +39,7 @@
        		<h3><i class="fa fa-list-alt"></i> Matching Offers (<?php echo sizeof($offers); ?>)</h3>
        		<hr>
        		
-       		<div class="row mb-5">
+       		<div class="row mb-5 text-center">
        			<?php if(sizeof($offers) !== 0): ?>
 					<?php foreach($offers as $offer): ?>
 						<div class="card mr-1" style="width: 18rem;">
@@ -54,7 +72,7 @@
        		
        		<div class="row">
 				<?php foreach($all_offers as $offer): ?>
-					<div class="card mr-1" style="width: 18rem;">
+					<div class="card mr-1 mb-1" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title"><?php echo $offer['username']; ?></h5>
 							<h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-at"></i> <?php echo $offer['email']; ?></h6>
