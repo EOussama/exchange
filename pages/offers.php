@@ -1,9 +1,18 @@
 <?php
 	session_start();
 
+	$_SESSION['logged-in'] = !isset($_SESSION['logged-in']) ? false : $_SESSION['logged-in'];
+	$_SESSION['userid'] = !isset($_SESSION['userid']) ? 0 : $_SESSION['userid'];
+	$_SESSION['username'] = !isset($_SESSION['username']) ? '' : $_SESSION['username'];
+	$_SESSION['email'] = !isset($_SESSION['email']) ? '' : $_SESSION['email'];
+	$_SESSION['city'] = !isset($_SESSION['city']) ? '' : $_SESSION['city'];
+	$_SESSION['state'] = !isset($_SESSION['state']) ? '' : $_SESSION['state'];
+	$_SESSION['needs'] = !isset($_SESSION['needs']) ? '' : $_SESSION['needs'];
+	$_SESSION['offers'] = !isset($_SESSION['offers']) ? '' : $_SESSION['offers'];
+		
 	require "../includes/database.php";
 	include "../includes/header.php";
-
+	
 	$query = "SELECT * FROM `matches` INNER JOIN `users` ON `users`.`userid` = `matches`.`userid` WHERE `users`.`userid` <> ".$_SESSION['userid'].";";
 	$results = $con->query($query);
 	$all_offers = $results->fetch_all(MYSQLI_ASSOC);
@@ -58,12 +67,14 @@
 						</div>
 					<?php endforeach; ?>
        			<?php else: ?>
-       				<div class="alert alert-danger" role="alert">
-						<h4 class="alert-heading"><i class="fa fa-exclamation-triangle"></i> Notice!</h4>
-						<p>No matching results for “city: <b><?php echo $_SESSION['city']; ?></b>” and “state: <b><?php echo $_SESSION['state']; ?></b>” were found on your database.</p>
-						<hr>
-						<p class="mb-0">Better luck next time.</p>
-					</div>
+       				<?php if($_SESSION['offers'] !== '' AND $_SESSION['needs'] !== ''): ?>
+						<div class="alert alert-danger" role="alert">
+							<h4 class="alert-heading"><i class="fa fa-exclamation-triangle"></i> Notice!</h4>
+							<p>No matching results for (needs: <b><?php echo $_SESSION['needs']; ?></b>) and (offers: <b><?php echo $_SESSION['offers']; ?></b>) in “city: <b><?php echo $_SESSION['city']; ?></b>” and “state: <b><?php echo $_SESSION['state']; ?></b>” were found on your database.</p>
+							<hr>
+							<p class="mb-0">Better luck next time.</p>
+						</div>
+     				<?php endif; ?>
       			<?php endif; ?>
        		</div>
        		
